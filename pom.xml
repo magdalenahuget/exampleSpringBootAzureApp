@@ -34,7 +34,33 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
+		    <plugin>
+		        <groupId>com.microsoft.azure</groupId>
+		        <artifactId>azure-spring-apps-maven-plugin</artifactId>
+		        <version>1.19.0</version>
+		        <configuration>
+		            <subscriptionId>431e63db-3a8f-469e-ba38-ce7d8b6564a7</subscriptionId>
+		            <resourceGroup>blogger</resourceGroup>
+		            <clusterName>spring-blog2</clusterName>
+		            <sku>Consumption</sku>
+		            <appName>myquickstart-app</appName>
+		            <isPublic>true</isPublic>
+		            <deployment>
+		                <cpu>1</cpu>
+		                <memoryInGB>2</memoryInGB>
+		                <instanceCount>1</instanceCount>
+		                <runtimeVersion>Java 17</runtimeVersion>
+		                <resources>
+		                    <resource>
+		                        <directory>${project.basedir}/target</directory>
+		                        <includes>
+		                            <include>*.jar</include>
+		                        </includes>
+		                    </resource>
+		                </resources>
+		            </deployment>
+		        </configuration>
+		    </plugin>
 		</plugins>
 	</build>
 
